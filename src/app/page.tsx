@@ -1,28 +1,20 @@
-
-import Browserange from "@/components/browseRange";
-import ProductGrid from "@/components/firstProduct";
-import Hero from "@/components/hero ";
-import Navbar from "@/components/navBar";
-import ProductDetails from "@/components/productDetails";
-import RelatedProducts from "@/components/relatedProducts";
-import RoomInspiration from "@/components/roomInspiration";
-import Footer from "@/components/footer";
-
+import BeautifulRoom from "@/components/beautifulRoom/beautifulRoom";
+import Browserange from  "@/components/browserrang/Browserrange"
+import Hero from "@/components/hero/Hero";
+import OurProducts from "@/components/ourproducts/OurProducts";
+import PhotoGallery from "@/components/photogallery/PhotoGallery";
 
 
 export default function Home() {
   return (
-   <>
-  
-   <Navbar/>
-   <Hero/>
-   <Browserange/>
-   <ProductGrid/>
-   <RoomInspiration/>
-   <ProductDetails/>
-   <RelatedProducts/>
-   <Footer/>
+    <>
+    <Hero/>
+    <Browserange/>
 
-   </>
+     <OurProducts/>
+    <BeautifulRoom/>
+
+    <PhotoGallery/>
+    </>
   );
 }
