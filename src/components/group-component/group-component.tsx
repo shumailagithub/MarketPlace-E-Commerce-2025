@@ -7,9 +7,6 @@ import Image from "next/image";
 export type GroupComponentType = {
   className?: string;
   thumbnailImages: string;
-  dashiconsadminUsers: string;
-  uiscalender: string;
-  citag: string;
   wood?: string;
   goingAllInWithMillennialDesign?: string;
 
@@ -24,9 +21,6 @@ export type GroupComponentType = {
 const GroupComponent: NextPage<GroupComponentType> = ({
   className = "",
   thumbnailImages,
-  dashiconsadminUsers,
-  uiscalender,
-  citag,
   wood,
   goingAllInWithMillennialDesign,
   adminTextDecoration,

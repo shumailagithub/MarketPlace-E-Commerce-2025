@@ -1,7 +1,7 @@
-interface BrowseRange{
-    src: string;
-    name: string;
-}
+// interface BrowseRange{
+//     src: string;
+//     name: string;
+// }
 
 export const browseRange = [
 {
