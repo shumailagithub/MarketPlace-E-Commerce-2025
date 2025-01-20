@@ -15,6 +15,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar"
+import ShipmentForm from "@/components/shipmentForm"
 
 export default function CheckoutForm() {
   return (
@@ -164,6 +165,11 @@ export default function CheckoutForm() {
                 <Button className="w-full mt-4" size="lg">
                   Place order
                 </Button>
+
+
+                <div>
+               <ShipmentForm/>
+               </div>
               </div>
             </CardContent>
           </Card>

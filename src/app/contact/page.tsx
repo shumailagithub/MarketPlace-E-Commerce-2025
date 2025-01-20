@@ -1,14 +1,108 @@
-import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Clock, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"use client";
+import { useState } from 'react';
+import  Image  from 'next/image';
+import { MapPin, Phone, Clock } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import Shopbottombar from '@/components/shopBottomBar/Shopbottombar';
+
+const ContactForm: React.FC = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
+  const closePopup = () => {
+    setIsSubmitted(false);
+  };
+
+  return (
+    <div>
+      <form className="md:col-span-2 space-y-6" onSubmit={handleSubmit}>
+        <div>
+          <label className="font-medium mb-2 block">Your name</label>
+          <Input placeholder="Abc" />
+        </div>
+        <div>
+          <label className="font-medium mb-2 block">Email address</label>
+          <Input placeholder="Abc@def.com" type="email" />
+        </div>
+        <div>
+          <label className="font-medium mb-2 block">Subject</label>
+          <Input placeholder="This is optional" />
+        </div>
+        <div>
+          <label className="font-medium mb-2 block">Message</label>
+          <Textarea
+            placeholder="Hi! I'd like to ask about..."
+            className="min-h-[120px]"
+          />
+        </div>
+        <Button
+          type="submit"
+          className="w-full md:w-auto bg-[#B88E2F] hover:bg-[#B88E2F]/90"
+        >
+          Submit
+        </Button>
+      </form>
+
+      {isSubmitted && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50">
+          <div className="bg-white p-6 rounded-md text-center space-y-4">
+            <p className="text-lg font-medium">
+              Recive Your Message Soon we will Contact you!
+            </p>
+            <Button
+              className="bg-[#B88E2F] hover:bg-[#B88E2F]/90"
+              onClick={closePopup}
+            >
+              OK
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
       <section className="bg-[url('/blogMainImage.png')] bg-cover bg-center py-12 md:py-16">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-block w-16 h-16 bg-[url('/logo1.png')] mb-4" />
@@ -25,7 +119,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-semibold text-center mb-4">
@@ -36,7 +129,6 @@ export default function ContactPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Contact Info */}
             <div className="space-y-8">
               <div className="flex gap-4">
                 <MapPin className="w-6 h-6 md:w-8 md:h-8" />
@@ -71,33 +163,11 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <form className="md:col-span-2 space-y-6">
-              <div>
-                <label className="font-medium mb-2 block">Your name</label>
-                <Input placeholder="Abc" />
-              </div>
-              <div>
-                <label className="font-medium mb-2 block">Email address</label>
-                <Input placeholder="Abc@def.com" type="email" />
-              </div>
-              <div>
-                <label className="font-medium mb-2 block">Subject</label>
-                <Input placeholder="This is optional" />
-              </div>
-              <div>
-                <label className="font-medium mb-2 block">Message</label>
-                <Textarea placeholder="Hi! I'd like to ask about..." className="min-h-[120px]" />
-              </div>
-              <Button className="w-full md:w-auto bg-[#B88E2F] hover:bg-[#B88E2F]/90">
-                Submit
-              </Button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>
 
-      {/* Bottom Bar */}
       <Shopbottombar />
     </div>
   );
