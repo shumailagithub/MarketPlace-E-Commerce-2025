@@ -1,9 +1,7 @@
 import {
   ClerkProvider,
-} from '@clerk/nextjs'
-
+} from '@clerk/nextjs';
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
