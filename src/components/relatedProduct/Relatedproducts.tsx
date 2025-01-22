@@ -68,6 +68,16 @@ function formatPrice(price: number, currency: string = "Rp"): string {
 }
 
 export default function RelatedProducts() {
+
+
+
+
+
+
+
+
+
+  
   return (
     <section className="py-12">
       <div className="container px-4 md:px-6">

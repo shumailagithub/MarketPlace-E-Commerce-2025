@@ -1,3 +1,4 @@
+// src\components\shipmentForm.tsx
 'use client'
 
 import { useState } from 'react'
@@ -6,9 +7,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Truck, User, Phone, Home, Building, MapPin, Package, Weight, Ruler } from 'lucide-react'
+import { Truck, User, Building, Package, } from 'lucide-react'
 import { postReq } from '@/services/shipmentApi'
-import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle } from './ui/alert-dialog'
+// import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle } from './ui/alert-dialog'
 import JsonResponseViewer from '@/components/jsonResponceViewer';
 
 export default function ShipmentForm() {
@@ -261,6 +262,13 @@ export default function ShipmentForm() {
     </form>
   )
 }
+
+
+
+
+
+
+
 
 
 

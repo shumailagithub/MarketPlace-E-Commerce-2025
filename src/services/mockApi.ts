@@ -1,5 +1,3 @@
-// src\services
-
 "use server";
 
 import { client } from "@/sanity/lib/client";
@@ -10,6 +8,7 @@ async function uploadImageToSanity(imageUrl: string) {
     if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
     const blob = await response.blob();
     const asset = await client.assets.upload("image", blob);
+    // console.log("Uploaded image:🤣", asset);
 
     return asset;
   } catch (error) {
@@ -25,6 +24,9 @@ export async function fetchData() {
 
     if (!response.ok) throw new Error(`Failed to fetch products: ${response.statusText}`);
     const products = await response.json();
+
+
+
     console.log("Fetched products:", products);
 
     // Upload images concurrently
@@ -58,16 +60,6 @@ export async function fetchData() {
         //   "ratingCount": product.rating?.count || 0,
         }
       ]
-      
-    
-
-
-
-
-
-
-
-
 
 
     });

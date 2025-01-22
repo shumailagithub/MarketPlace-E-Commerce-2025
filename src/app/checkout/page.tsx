@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Card, CardContent } from "@/components/ui/card"
@@ -11,13 +11,14 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar"
 import ShipmentForm from "@/components/shipmentForm"
 
 export default function CheckoutForm() {
+
   return (
     <div className="min-h-screen bg-white px-4 md:px-8 lg:px-12">
 
@@ -164,15 +165,18 @@ export default function CheckoutForm() {
 
                 <Button className="w-full mt-4" size="lg">
                   Place order
-                </Button>
+                </Button> 
 
 
-                <div>
-               <ShipmentForm/>
-               </div>
+
+
               </div>
+
+
             </CardContent>
           </Card>
+
+          <ShipmentForm />
         </div>
       </div>
 

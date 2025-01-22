@@ -1,14 +1,17 @@
+// src\app\cart
 import React from 'react'
 import Image from 'next/image'
 import Shopbottombar from '@/components/shopBottomBar/Shopbottombar'
 import { Input } from '@/components/ui/input'
 import { Trash } from 'lucide-react'
-
 import CartTotals from '@/components/cartTotals/CartTotals'
+
 
 function Cart() {
   return (
     <>
+
+
       {/* Banner Section */}
 
       <section className="bg-[url('/blogMainImage.png')] bg-cover bg-center py-12 md:py-16 mb-6">
@@ -69,8 +72,9 @@ function Cart() {
         <div className="w-full lg:w-[393px]">
 
           <CartTotals/>
-         
         </div>
+
+       
       </div>
 
       <Shopbottombar />

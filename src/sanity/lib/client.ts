@@ -11,4 +11,4 @@ export const client = createClient({
 });
 
 // Handle the API_KEY separately if needed
-const apiKey = process.env.NEXT_PUBLIC_SHIPENGINE_API_KEY;
+// const apiKey = process.env.NEXT_PUBLIC_SHIPENGINE_API_KEY;

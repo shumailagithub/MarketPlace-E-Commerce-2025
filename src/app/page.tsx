@@ -3,6 +3,13 @@ import Browserange from  "@/components/browserrang/Browserrange"
 import Hero from "@/components/hero/Hero";
 import OurProducts from "@/components/ourproducts/OurProducts";
 import PhotoGallery from "@/components/photogallery/PhotoGallery";
+import SimpleForm from "@/components/SimpleForm";
+
+
+
+
+
+
 
 
 export default function Home() {
@@ -14,7 +21,14 @@ export default function Home() {
      <OurProducts/>
     <BeautifulRoom/>
 
+    <SimpleForm />
+
     <PhotoGallery/>
+
+ 
+
+
+
     </>
   );
 }
