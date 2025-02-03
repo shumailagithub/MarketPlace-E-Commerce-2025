@@ -69,6 +69,7 @@ export default function ShipmentForm() {
 
     const data = await postReq(submitData)
     setShipmentResponse(data)
+  
 
   }
 
@@ -262,6 +263,31 @@ export default function ShipmentForm() {
     </form>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

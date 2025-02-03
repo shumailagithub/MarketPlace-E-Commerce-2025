@@ -18,7 +18,7 @@ const Footer1: NextPage<FooterType> = ({ className = "" }) => {
           
           {/* Company Information */}
           <div className="h-auto w-full md:w-[287px] flex flex-col items-start justify-start gap-4 md:gap-6">
-            <h3 className="text-xl font-bold">Funiro.</h3>
+            <h3 className="text-xl font-bold">Furniro.</h3>
             <div className="text-base text-gray-500">
               <p>400 University Drive Suite 200 Coral Gables,</p>
               <p>FL 33134 USA</p>
@@ -66,7 +66,7 @@ const Footer1: NextPage<FooterType> = ({ className = "" }) => {
         <div className="w-full h-auto flex flex-col items-start justify-start gap-4 mt-8 text-sm border-t border-gray-300 pt-6">
           <div className="w-full border-t border-gray-200" />
           <div className="text-center text-gray-500">
-            2023 Funiro. All rights reserved
+            2023 Furniro. All rights reserved
           </div>
         </div>
       </div>

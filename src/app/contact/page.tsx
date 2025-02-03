@@ -1,46 +1,25 @@
-// 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
-import { useState } from 'react';
-import  Image  from 'next/image';
-import { MapPin, Phone, Clock } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import Shopbottombar from '@/components/shopBottomBar/Shopbottombar';
+import { useState } from "react";
+import Image from "next/image";
+import { MapPin, Phone, Clock } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
 
 const ContactForm: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,21 +35,43 @@ const ContactForm: React.FC = () => {
       <form className="md:col-span-2 space-y-6" onSubmit={handleSubmit}>
         <div>
           <label className="font-medium mb-2 block">Your name</label>
-          <Input placeholder="Abc" />
+          <Input
+            name="name"
+            placeholder="Abc"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div>
           <label className="font-medium mb-2 block">Email address</label>
-          <Input placeholder="Abc@def.com" type="email" />
+          <Input
+            name="email"
+            placeholder="Abc@def.com"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div>
           <label className="font-medium mb-2 block">Subject</label>
-          <Input placeholder="This is optional" />
+          <Input
+            name="subject"
+            placeholder="This is optional"
+            value={formData.subject}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <label className="font-medium mb-2 block">Message</label>
           <Textarea
+            name="message"
             placeholder="Hi! I'd like to ask about..."
             className="min-h-[120px]"
+            value={formData.message}
+            onChange={handleChange}
+            required
           />
         </div>
         <Button
@@ -82,16 +83,28 @@ const ContactForm: React.FC = () => {
       </form>
 
       {isSubmitted && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-          <div className="bg-white p-6 rounded-md text-center space-y-4">
-            <p className="text-lg font-medium">
-              Recive Your Message Soon we will Contact you!
-            </p>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white p-6 rounded-md text-center space-y-4 shadow-md max-w-md w-full mx-4">
+            <h3 className="text-lg font-medium text-gray-800">Your Submission</h3>
+            <div className="text-left text-gray-700">
+              <p>
+                <strong>Name:</strong> {formData.name}
+              </p>
+              <p>
+                <strong>Email:</strong> {formData.email}
+              </p>
+              <p>
+                <strong>Subject:</strong> {formData.subject || "N/A"}
+              </p>
+              <p>
+                <strong>Message:</strong> {formData.message}
+              </p>
+            </div>
             <Button
               className="bg-[#B88E2F] hover:bg-[#B88E2F]/90"
               onClick={closePopup}
             >
-              OK
+              Coment Submitted
             </Button>
           </div>
         </div>

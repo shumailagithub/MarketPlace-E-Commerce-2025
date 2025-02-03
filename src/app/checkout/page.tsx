@@ -1,3 +1,4 @@
+// src\app\checkout
 "use client";
 
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -15,7 +16,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar"
-import ShipmentForm from "@/components/shipmentForm"
+import Link from "next/link";
 
 export default function CheckoutForm() {
 
@@ -36,6 +37,10 @@ export default function CheckoutForm() {
           </div>
         </div>
       </div>
+
+
+
+      
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -166,18 +171,28 @@ export default function CheckoutForm() {
                 <Button className="w-full mt-4" size="lg">
                   Place order
                 </Button> 
-
+                  
 
 
 
               </div>
+              <Link href={"/ShipmentForm"}>
+        <Button className="w-full mt-4" size="lg">
+          view More Details
+        </Button>
+        </Link>
 
 
             </CardContent>
           </Card>
 
-          <ShipmentForm />
         </div>
+        {/* <Link href={"/ShipmentForm"}>
+        <Button>
+          view More Details
+        </Button>
+        </Link> */}
+       
       </div>
 
       <Shopbottombar />

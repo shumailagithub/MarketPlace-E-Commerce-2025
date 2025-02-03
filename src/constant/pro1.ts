@@ -1,4 +1,6 @@
 export interface Product {
+    reviews: React.ReactNode | Iterable<React.ReactNode>
+    star: any
     id: string
     src: string
     name: string
@@ -21,14 +23,18 @@ export interface Product {
       image: '/Syltheriner.png',
       tag: 'sale',
       salePercentage: 30,
+      reviews: undefined,
+      star: undefined
     },
     {
       id: '2',
       name: 'Leviosa',
-      src: '/Leviosa.png', 
+      src: '/Leviosa.png',
       description: 'Stylish table chair',
       price: 2500000,
       image: '/Leviosa.png',
+      reviews: undefined,
+      star: undefined
     },
     {
       id: '3',
@@ -40,6 +46,8 @@ export interface Product {
       image: '/Lolito.png',
       tag: 'sale',
       salePercentage: 50,
+      reviews: undefined,
+      star: undefined
     },
     {
       id: '4',
@@ -49,6 +57,8 @@ export interface Product {
       price: 500000,
       image: '/Respira.png',
       tag: 'new',
+      reviews: undefined,
+      star: undefined
     },
     {
       id: '5',
@@ -57,6 +67,8 @@ export interface Product {
       description: 'Night lamp',
       price: 1500000,
       image: '/1.png',
+      reviews: undefined,
+      star: undefined
     },
     {
       id: '6',
@@ -66,6 +78,8 @@ export interface Product {
       price: 150000,
       image: '/2.png',
       tag: 'new',
+      reviews: undefined,
+      star: undefined
     },
     {
       id: '7',
@@ -77,6 +91,8 @@ export interface Product {
       image: '/3.png',
       tag: 'sale',
       salePercentage: 50,
+      reviews: undefined,
+      star: undefined
     },
     {
       id: '8',
@@ -86,5 +102,7 @@ export interface Product {
       price: 500000,
       image: '/4.png',
       tag: 'new',
+      reviews: undefined,
+      star: undefined
     },
   ]

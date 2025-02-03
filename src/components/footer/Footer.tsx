@@ -74,7 +74,7 @@ export default function Footer() {
         {/* Bottom Section (Copyright) */}
         <div className="border-t border-[#D9D9D9] pt-4 text-center">
           <p className="text-black font-poppins text-sm sm:text-base">
-            2023 Funiro. All rights reserved
+            2023 Furniro. All rights reserved
           </p>
         </div>
       </div>

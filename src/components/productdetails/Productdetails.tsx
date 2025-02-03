@@ -1,9 +1,15 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { products } from "@/constant/pro1";
 import Image from "next/image";
 
-export default function ProductDetails() {
+export default function ProductDetails(props:{id:number}) {
+
+  const data = products[props.id];
+
+
+
   return (
     <div className="max-w-7xl mx-auto px-2 exsm:px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
       {/* Tabs for Description, Additional Information, and Reviews */}
@@ -34,7 +40,7 @@ export default function ProductDetails() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
             <div className="bg-[#fdf6f0] rounded-lg p-4 sm:p-8">
               <Image
-                src="/sofa.png"
+                src={data.src}
                 alt="Sofa straight view"
                 width={605}
                 height={348}
@@ -43,7 +49,7 @@ export default function ProductDetails() {
             </div>
             <div className="bg-[#fdf6f0] rounded-lg p-4 sm:p-8">
               <Image
-                src="/sofa.png"
+                src={data.src}
                 alt="Sofa L-shaped view"
                 width={605}
                 height={348}
@@ -70,34 +76,3 @@ export default function ProductDetails() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

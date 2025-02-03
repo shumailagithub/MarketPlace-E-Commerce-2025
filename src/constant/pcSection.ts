@@ -4,9 +4,9 @@ export const PcSection = [
     {
 
        heading:"General",
-       one:"Sale Package",
-       two:"Model Number",
-       three:"Secondary Material",
+       one:"/Sale Package",
+       two:"./Model Number",
+       three:"/Secondary Material",
        four:"Configuration ",
        five:"1 sectional sofa",
        six:"TFCBLIGRBL6SRHS",

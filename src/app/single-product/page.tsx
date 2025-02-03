@@ -4,6 +4,7 @@ import Relatedproducts from '@/components/relatedProduct/Relatedproducts'
 // import Spmain from '@/components/spmain/Spmain'
 import { ChevronRight } from 'lucide-react'
 import DynamicProducts from '../dynamic/[dynmid]/page'
+import Spmain from '@/components/spmain/Spmain'
 
 function Singleproduct() {
   return (
@@ -36,7 +37,7 @@ function Singleproduct() {
 
 
       {/* Main Product Section */}
-      {/* <Spmain /> */}
+      <Spmain id={1} />
       <DynamicProducts />
 
       {/* Product Details Section */}

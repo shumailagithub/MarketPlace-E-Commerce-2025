@@ -1,25 +1,18 @@
+
 import Image from "next/image"
-import { Heart, Share2, BarChart2, ShoppingCart } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { Heart, Share2, BarChart2 } from 'lucide-react'
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
+import Link from "next/link";
+import { fetchData } from "@/services/mockApi";
+import { client } from "@/sanity/lib/client";
+import { Product } from "@/types/product"
 
 
-import Shopbottombar from "@/components/shopBottomBar/Shopbottombar"
-import { fetchData } from "@/services/mockApi"
-import { client } from "@/sanity/lib/client"
-import Link from "next/link"
 
 
-interface Product {
-    productImage:string;
-     price: number;
-      tags: string[];
-      description: string;
-      isNew: boolean;
-     title: string;
-       dicountPercentage: number;
-   }
 
 export default async function ProductGrid() {
   const formatPrice = (price: number) => {
@@ -30,8 +23,6 @@ export default async function ProductGrid() {
     }).format(price)
   }
 
-  // await fetchData();
-
 
 
   const res = await client.fetch(`*[_type == 'product']{
@@ -41,11 +32,22 @@ export default async function ProductGrid() {
       description,
       isNew,
       title,
-      dicountPercentage}`)
+      dicountPercentage,
+      inventory,
+      category,
+      }`)
 
 if(!res || res.length === 0){
   await fetchData();
+ 
 }
+
+
+
+
+
+
+
 return (
 
   <>
@@ -65,13 +67,18 @@ return (
       </div>
     </section>
 
+  
+ 
     <div className="container mx-auto p-4 md:p-6">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {res.map((item: Product, index: number) => (
-          <Card key={index} className="group relative overflow-hidden shadow-md">
+        {res.map((item: Product, id: number) => (
+          <Card key={id} className="group relative overflow-hidden shadow-md">
            
-           <Link href={`/products/ProductDetail?title=${item.title}&dicountPercentage=${item.dicountPercentage}
-            &price=${item.price}&productImage=${item.productImage}`} passHref>
+           <Link href={`/products/ProductDetail?title=${item.title}
+           &dicountPercentage=${item.dicountPercentage}
+            &description=${item.description}
+            &price=${item.price}
+            &productImage=${item.productImage}`} passHref>
             <div className="relative aspect-square">
               
               <Image
@@ -102,36 +109,48 @@ return (
             </Link>
             <CardContent className="p-4">
               <h3 className="text-lg font-semibold">{item.title}</h3>
-              {/* <p className="text-sm text-gray-500">{item.category}</p> */}
+               {/* <p className="text-sm text-gray-500">{item.category}</p>  */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4 p-4">
-              <div className="flex items-center gap-2">
-                <span className="text-lg font-bold">{formatPrice(item.price)}</span>
-                {item.price && (
-                  <span className="text-sm text-gray-500 line-through">
-                    {formatPrice(item.price)}
-                  </span>
-                )}
-              </div>
-              <Button className="w-full md:w-auto">
-                <ShoppingCart className="mr-2 h-4 w-4" />
-                Add to cart
-              </Button>
-            </CardFooter>
+
+
+
+
+
+
+
+<CardFooter className="flex flex-col items-start gap-4 p-4">
+  <div className="flex items-center gap-2">
+    <span className="text-lg font-bold">{formatPrice(item.price)}</span>
+  </div> 
+
+ 
+</CardFooter>
+
+
+            
           </Card>
         ))}
       </div>
       <div className="mt-8 flex justify-center gap-2 flex-wrap">
-        <Button variant="outline" className="w-12">1</Button>
-        <Button variant="outline" className="w-12">2</Button>
+
+    <Link href={'/Singleproduct'}>
+    <Button variant="outline" className="w-12">1</Button>
+    </Link>
+    <Link href={"/OurProducts"}>
+    <Button variant="outline" className="w-12">2</Button>
+    </Link>
+       <Link href={"/BeautifulRoom"}>
         <Button variant="outline" className="w-12">3</Button>
+        </Link>
         <Button variant="outline" className="w-20">Next</Button>
       </div>
     </div>
 
     <Shopbottombar />
     
-    <section/>
+    <section/> 
+
+
   </>
 
 )}
@@ -143,3 +162,11 @@ return (
 
 
   
+
+
+
+
+
+
+
+

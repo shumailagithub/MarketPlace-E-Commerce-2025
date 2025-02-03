@@ -1,9 +1,20 @@
+"use client"
 import { products } from '@/constant/pro1'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ProductCard } from '../productCard/productCard'
-import Link from 'next/link'
+import Link from 'next/link';
+import { sanityUserPost } from '@/services/userApi';
+
+// import { clerkGetUser } from "@/services/userApi";
+// import { useEffect } from 'react';
 
 function OurProducts() {
+
+  useEffect(()=>{
+    sanityUserPost()
+  }, [])
+
+
   return (
     <>
       {/* Product Section */}

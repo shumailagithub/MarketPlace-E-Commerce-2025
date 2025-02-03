@@ -1,13 +1,15 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, SignInButton, SignOutButton, UserButton } from '@clerk/nextjs'
 import React from 'react'
 
 function Payment() {
   return (
     <div>
-    {/* Simple unstyled Sign out button */}
-    {/* <SignedIn>
-        <SignOutButton />
-    </SignedIn> */}
+    Sign out button
+    <SignedIn> 
+        <div className="w-[150px] text-center p-4 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all">
+            <SignOutButton />
+        </div>
+    </SignedIn> 
 
     {/* Signout Button with styling */}
     <SignedOut>
@@ -41,3 +43,21 @@ function Payment() {
 
 
 export default Payment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
