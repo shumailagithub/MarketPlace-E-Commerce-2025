@@ -1,13 +1,13 @@
-"use client";  // Is line ko sabse upar add karein
+"use client";
 
-import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
-import Shopbottombar from '@/components/shopBottomBar/Shopbottombar'
-import { Trash } from 'lucide-react'
-import CartTotals from '@/components/cartTotals/CartTotals'
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
+import { Trash } from "lucide-react";
+import CartTotals from "@/components/cartTotals/CartTotals";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface Iproduct {
   title: string;
@@ -16,9 +16,9 @@ interface Iproduct {
   productImage: string;
 }
 
-function Cart() {
+function CartContent() {
   const router = useRouter();
-  const searchParams = useSearchParams();  // Yeh sirf client component me kaam karega
+  const searchParams = useSearchParams();
   const [cartItem, setCartItem] = useState<Iproduct[]>([]);
   const [qty, setQty] = useState(1);
 
@@ -32,7 +32,9 @@ function Cart() {
     const productImage = searchParams.get("productImage");
 
     if (title && price && description && productImage) {
-      const isDuplicate = updatedCart.some((item: Iproduct) => item.title === title);
+      const isDuplicate = updatedCart.some(
+        (item: Iproduct) => item.title === title
+      );
       if (!isDuplicate) {
         updatedCart.push({ title, price, description, productImage });
       }
@@ -52,10 +54,13 @@ function Cart() {
   function handleQuantity(index: number, num: string) {
     setQty(Number(num));
   }
+  
 
   return (
     <>
-      <section className="bg-[url('/blogMainImage.png')] bg-cover bg-center py-12 md:py-16 mb-6">
+    <Suspense>
+    
+    <section className="bg-[url('/blogMainImage.png')] bg-cover bg-center py-12 md:py-16 mb-6">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-block w-16 h-16 bg-[url('/logo1.png')] mb-4" />
           <h1 className="text-3xl md:text-4xl font-medium mb-4">Cart</h1>
@@ -105,11 +110,14 @@ function Cart() {
         <div className="w-full lg:w-[393px]">
           <CartTotals />
         </div>
-      </div>
 
-      <Shopbottombar />
+        <Shopbottombar />
+      </div>
+      <CartContent />
+      </Suspense>
     </>
   );
 }
-
 export default Cart;
+
+
