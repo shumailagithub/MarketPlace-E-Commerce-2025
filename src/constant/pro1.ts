@@ -1,6 +1,6 @@
 export interface Product {
     reviews: React.ReactNode | Iterable<React.ReactNode>
-    star: any
+    star: number | undefined
     id: string
     src: string
     name: string

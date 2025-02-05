@@ -5,6 +5,7 @@ import { client } from "@/sanity/lib/client"
 
 
 export interface ICard {
+  id: Key | null | undefined;
   productName: string | number | readonly string[] | undefined;
   productImage: string;
   colors: string;

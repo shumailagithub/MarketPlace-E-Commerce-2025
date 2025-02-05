@@ -135,7 +135,7 @@ return (
       </div>
       <div className="mt-8 flex justify-center gap-2 flex-wrap">
 
-    <Link href={'/Singleproduct'}>
+    <Link href={'/Spmain'}>
     <Button variant="outline" className="w-12">1</Button>
     </Link>
     <Link href={"/OurProducts"}>
