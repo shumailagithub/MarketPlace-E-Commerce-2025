@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
 import { Trash } from "lucide-react";
@@ -8,6 +8,8 @@ import CartTotals from "@/components/cartTotals/CartTotals";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import React, { Suspense } from "react";
+
 
 interface Iproduct {
   title: string;
@@ -54,13 +56,10 @@ function CartContent() {
   function handleQuantity(index: number, num: string) {
     setQty(Number(num));
   }
-  
 
   return (
     <>
-    <Suspense>
-    
-    <section className="bg-[url('/blogMainImage.png')] bg-cover bg-center py-12 md:py-16 mb-6">
+      <section className="bg-[url('/blogMainImage.png')] bg-cover bg-center py-12 md:py-16 mb-6">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-block w-16 h-16 bg-[url('/logo1.png')] mb-4" />
           <h1 className="text-3xl md:text-4xl font-medium mb-4">Cart</h1>
@@ -110,14 +109,19 @@ function CartContent() {
         <div className="w-full lg:w-[393px]">
           <CartTotals />
         </div>
-
-        <Shopbottombar />
       </div>
-      <CartContent />
-      </Suspense>
+
+      <Shopbottombar />
     </>
   );
 }
+
+function Cart() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CartContent />
+    </Suspense>
+  );
+}
+
 export default Cart;
-
-
