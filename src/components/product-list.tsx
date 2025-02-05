@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { ProductCard } from "./product-card"
-// import { SearchBar } from "./search-bar"
 import { CategoryFilter } from "./category-filter"
 import type { Product } from "../types/product"
 import { SearchBar } from "./search-bar"
@@ -30,7 +29,9 @@ export function ProductList({ products }: ProductListProps) {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-        <SearchBar onSearch={setSearchQuery} />
+      
+        <SearchBar onSearchAction={setSearchQuery} />
+
         <CategoryFilter
           categories={categories}
           selectedCategory={selectedCategory}
