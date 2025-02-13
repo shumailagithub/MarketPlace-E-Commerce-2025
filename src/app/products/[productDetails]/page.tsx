@@ -1,7 +1,35 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+
+
+
+
+
+interface SnipcartAPI {
+  api: {
+    cart: {
+      items: {
+        add: (item: {
+          id: string;
+          name: string;
+          price: number;
+          url: string;
+          description?: string;
+          image?: string;
+        }) => void;
+      };
+    };
+  };
+}
+
+declare global {
+  interface Window {
+    Snipcart: SnipcartAPI;
+  }
+}
 
 
 
@@ -9,19 +37,33 @@ import Link from "next/link";
 
 
 
-
-
-export default async function ProductDetails({searchParams} : {searchParams: Promise<{
-    title: string,
-    description: string,
-    price: number,
-    productImage: string,
-  }>}) 
+// declare global {
+//   interface Window {
+//     Snipcart: any;
+//   }
+// }
+export default function ProductDetails() 
   
   {
-  
-    const {title, description, price, productImage} = await searchParams
-  
+    const searchParams = useSearchParams()
+    const heading = searchParams.get('heading')
+    const title = searchParams.get('title')
+    const description = searchParams.get('description')
+    const price = searchParams.get('price')
+    const productImage = searchParams.get('productImage')
+//-------------------------------
+const handleAddToCart = () => {
+  window.Snipcart.api.cart.items.add({
+    id: heading || 'default-id',
+    name: title || 'default-title',
+    price: price ? parseFloat(price) : 0,
+    url: `/products/productDetails?heading=${heading}&title=${title}
+    &description=${description}&price=${price}&productImage=${productImage}`,
+    description: description || undefined,
+    image: productImage || undefined,
+  });
+};
+
     return (
       <div className="min-h-screen bg-white p-6 mt-[100px]">
         <div className="mx-auto max-w-7xl">
@@ -29,7 +71,7 @@ export default async function ProductDetails({searchParams} : {searchParams: Pro
             {/* Product Image */}
             <div className="relative aspect-square rounded-lg bg-[#F5F5F5] p-8">
               <Image
-                src={productImage}
+                src={productImage || '/default-image.jpg'}
                 alt="Nike Air Force 1 PLT.AF.ORM"
                 className="h-full w-full object-contain"
                 width={600}
@@ -48,15 +90,16 @@ export default async function ProductDetails({searchParams} : {searchParams: Pro
               </p>
   
               <div className="space-y-4">
-                <p className="font-poppins text-3xl font-medium md:text-4xl">Rs.{price.toLocaleString()}.00</p>
+                <p className="font-poppins text-3xl font-medium md:text-4xl">Rs.{price ? parseFloat(price).toLocaleString() : '0.00'}</p>
                 <div className="mt-10">
   
-            <Link href={`/cart?title=${title}&price=${price}&productImage=${productImage}`} passHref>
-            <Button className="h-12 w-[300px] rounded-full px-8 bg-black text-white p-2 hover:bg-gray-900 transition-colors">
+           
+            <Button className="h-12 w-[300px] rounded-full px-8 bg-black text-white p-2 hover:bg-gray-900 transition-colors"
+            onClick={handleAddToCart}>
               <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />
               Add To Cart
             </Button>
-            </Link>
+            
   
   
                 </div>
@@ -68,3 +111,23 @@ export default async function ProductDetails({searchParams} : {searchParams: Pro
     )
   }
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,3 @@
-// src\components\jsonResponceViewer.tsx
 'use client'
 
 import { useState } from 'react'

@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 
 export type FooterType = {
   className?: string;
@@ -30,10 +31,15 @@ const Footer1: NextPage<FooterType> = ({ className = "" }) => {
             <div className="flex flex-col gap-4">
               <div className="font-medium">Links</div>
               <nav className="flex flex-col gap-4">
-                <a href="#" className="hover:text-gray-700">Home</a>
-                <a href="#" className="hover:text-gray-700">Shop</a>
-                <a href="#" className="hover:text-gray-700">About</a>
-                <a href="#" className="hover:text-gray-700">Contact</a>
+
+                <Link href="/" className="hover:text-gray-700">Home</Link>
+                <Link href="/shop" className="hover:text-gray-700">Shop</Link>
+                <Link href="/" className="hover:text-gray-700">About</Link>
+                <Link href="/contact" className="hover:text-gray-700">Contact</Link>
+                {/* <a href="/" className="hover:text-gray-700">Home</a> */}
+                {/* <a href="/shop" className="hover:text-gray-700">Shop</a> */}
+                {/* <a href="/" className="hover:text-gray-700">About</a> */}
+                {/* <a href="/contact" className="hover:text-gray-700">Contact</a> */}
               </nav>
             </div>
 

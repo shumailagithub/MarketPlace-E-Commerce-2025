@@ -54,7 +54,7 @@ async function Singleproduct({ params }: { params: Promise<{ id: number }> }) {
       {/* Main Product Section */}
       <Spmain id={id}/>
 
-      {/* Product Details Section */}
+  
       {/* <Productdetails /> */}
       <Productdetails id={id} />
 

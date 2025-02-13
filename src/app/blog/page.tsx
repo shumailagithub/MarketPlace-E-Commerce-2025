@@ -1,5 +1,3 @@
-  
-  
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";

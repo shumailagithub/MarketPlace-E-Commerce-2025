@@ -1,25 +1,3 @@
-
-
-// export interface IProduct {
-//     title: string;
-//     description: string;
-//     price: string;
-//     productImage: string;
-
-// }
-
-// interface Product {
-//     id: string;
-//     title: string;
-//     price: number;
-//     discountPercentage?: number;
-//     category?: string;
-//     image?: string;
-//     description: string;
-//   }
-
-
-
 export interface Product {
   id: string;
   category?: string;

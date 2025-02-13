@@ -2,116 +2,94 @@
 import { useState } from "react";
 import Image from "next/image";
 import { MapPin, Phone, Clock } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
+import { sendEmail } from "@/services/emailServices";
+
 
 const ContactForm: React.FC = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  return <ContactUs />;
+};
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+const ContactUs: React.FC = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-  };
 
-  const closePopup = () => {
-    setIsSubmitted(false);
+    const templateParams = {
+      to_name: "Shumaila Gulfam",
+      from_name: name,
+      from_email: email,
+      message: message
+    };
+
+    try {
+      await sendEmail(templateParams);
+      alert("Email sent successfully");
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      console.error('EmailJs Error', error);
+      alert("Failed to send email");
+    }
   };
 
   return (
     <div>
-      <form className="md:col-span-2 space-y-6" onSubmit={handleSubmit}>
-        <div>
-          <label className="font-medium mb-2 block">Your name</label>
-          <Input
-            name="name"
-            placeholder="Abc"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label className="font-medium mb-2 block">Email address</label>
-          <Input
-            name="email"
-            placeholder="Abc@def.com"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label className="font-medium mb-2 block">Subject</label>
-          <Input
-            name="subject"
-            placeholder="This is optional"
-            value={formData.subject}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label className="font-medium mb-2 block">Message</label>
-          <Textarea
-            name="message"
-            placeholder="Hi! I'd like to ask about..."
-            className="min-h-[120px]"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <Button
-          type="submit"
-          className="w-full md:w-auto bg-[#B88E2F] hover:bg-[#B88E2F]/90"
-        >
-          Submit
-        </Button>
-      </form>
+      <div className="w-[650px] mx-auto">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {/* Name & Email Fields */}
+          <div className="flex gap-4">
+            <input
+              type="text"
+              placeholder="Your name"
+              className="flex-1 p-4 text-white bg-[#B88E2F] rounded-[8px] placeholder-white outline-none"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
 
-      {isSubmitted && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-          <div className="bg-white p-6 rounded-md text-center space-y-4 shadow-md max-w-md w-full mx-4">
-            <h3 className="text-lg font-medium text-gray-800">Your Submission</h3>
-            <div className="text-left text-gray-700">
-              <p>
-                <strong>Name:</strong> {formData.name}
-              </p>
-              <p>
-                <strong>Email:</strong> {formData.email}
-              </p>
-              <p>
-                <strong>Subject:</strong> {formData.subject || "N/A"}
-              </p>
-              <p>
-                <strong>Message:</strong> {formData.message}
-              </p>
-            </div>
-            <Button
-              className="bg-[#B88E2F] hover:bg-[#B88E2F]/90"
-              onClick={closePopup}
-            >
-              Coment Submitted
-            </Button>
+            <input
+              type="email"
+              placeholder="Your email"
+              className="flex-1 p-4 text-white bg-[#B88E2F] rounded-lg placeholder-white outline-none"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
-        </div>
-      )}
+
+          {/* Subject Field */}
+          <input
+            type="text"
+            placeholder="Subject"
+            className="w-full p-4 text-white bg-[#B88E2F] rounded-lg placeholder-white outline-none"
+          />
+
+          {/* Message Field */}
+          <textarea
+            placeholder="Your message"
+            className="w-full h-[224px] p-4 text-white bg-[#B88E2F] rounded-lg placeholder-white outline-none"
+            name="message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          ></textarea>
+
+          {/* Submit Button */}
+          <input
+            type="submit"
+            className="w-[178px] h-[52px] bg-[#B88E2F] text-white rounded-lg cursor-pointer hover:bg-[rgb(218,173,67)] transition"
+            value="Send message"
+          />
+        </form>
+      </div>
     </div>
   );
 };
+
 
 export default function ContactPage() {
   return (
@@ -148,7 +126,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-medium text-lg md:text-xl mb-2">Address</h3>
                   <p className="text-gray-600 text-sm md:text-base">
-                    236 5th SE Avenue, New York NY10000, United States
+                    H# 363 Street 6/A Kashmir Colony, Karachi
                   </p>
                 </div>
               </div>
@@ -157,9 +135,9 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-medium text-lg md:text-xl mb-2">Phone</h3>
                   <p className="text-gray-600 text-sm md:text-base">
-                    Mobile: +(84) 546-6789
+                    Mobile: +92 336 2059152
                     <br />
-                    Hotline: +(84) 456-6789
+                    
                   </p>
                 </div>
               </div>

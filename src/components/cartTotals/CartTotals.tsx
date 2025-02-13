@@ -39,4 +39,16 @@ function CartTotals() {
   );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 export default CartTotals;

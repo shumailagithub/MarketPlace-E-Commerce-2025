@@ -1,7 +1,5 @@
 import React from 'react'
-// import Productdetails from '@/components/productdetails/Productdetails'
 import Relatedproducts from '@/components/relatedProduct/Relatedproducts'
-// import Spmain from '@/components/spmain/Spmain'
 import { ChevronRight } from 'lucide-react'
 import DynamicProducts from '../dynamic/[dynmid]/page'
 import Spmain from '@/components/spmain/Spmain'
